@@ -17,7 +17,7 @@ router.post("/signup", async (req, res, next) => {
 
     if (user) throw new createError.Conflict(`${email} already exists`);
 
-    const newUser = await User.create({ email, password });
+    const newUser = new User({ email, password });
 
     const savedUser = await newUser.save();
 
