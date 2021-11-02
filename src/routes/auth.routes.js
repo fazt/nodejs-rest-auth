@@ -2,6 +2,7 @@ import { Router } from "express";
 import createError from "http-errors";
 import User from "../models/User";
 import { authSchema } from "../helpers/validation_schema";
+import { signAccessToken } from "../helpers/jwt_helpers";
 
 const router = Router();
 
@@ -21,7 +22,9 @@ router.post("/signup", async (req, res, next) => {
 
     const savedUser = await newUser.save();
 
-    res.json(savedUser);
+    const accessToken = await signAccessToken(savedUser.id);
+
+    res.json({ accessToken });
   } catch (error) {
     if (error.isJoi) error.status = 422;
     next(error);

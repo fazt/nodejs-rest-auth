@@ -1,10 +1,14 @@
-import { config } from 'dotenv'
+import { config } from "dotenv";
 
-config()
+config();
 
 // Server Settings
-export const PORT = process.env.PORT || 3000
+export const PORT = process.env.PORT || 3000;
 
 // Mongodb Settings
-export const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017'
-export const MONGODB_DB = process.env.MONGODB_DB || 'test'
+export const MONGODB_URI =
+  process.env.MONGODB_URI || "mongodb://localhost:27017";
+export const MONGODB_DB = process.env.MONGODB_DB || "test";
+
+// SECRET
+export const JWT_SECRET = process.env.JWT_SECRET || "some-secret";
