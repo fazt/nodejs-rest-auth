@@ -2,6 +2,12 @@
 
 ### signup
 POST {{api}}/signup
+Content-Type: application/json
+
+{
+  "email": "joe@faztweb.com",
+  "password": "joepassword"
+}
 
 ### signin 
 POST {{api}}/signin

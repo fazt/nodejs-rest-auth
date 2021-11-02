@@ -1,21 +1,42 @@
-import { Router } from 'express'
+import { Router } from "express";
+import createError from "http-errors";
+import User from "../models/User";
 
-const router = Router()
+const router = Router();
 
-router.post('/signup', async (req, res, next) => {
-  res.send('signup route')
-})
+router.post("/signup", async (req, res, next) => {
+  try {
+    const { email, password } = req.body;
 
-router.post('/signin', async (req, res, next) => {
-  res.send('signin route')
-})
+    // validate email and password
+    if (!email || !password)
+      throw new createError.BadRequest("Email and password are required");
 
-router.post('/refresh-token', async (req, res, next) => {
-  res.send('refreshing a token')
-})
+    // check if user already exists
+    const user = await User.findOne({ email });
 
-router.post('/logout', async (req, res, next) => {
-  res.send('logout')
-})
+    if (user) throw new createError.Conflict(`${email} already exists`);
 
-export default router
+    const newUser = await User.create({ email, password });
+
+    const savedUser = await newUser.save();
+
+    res.json(savedUser);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.post("/signin", async (req, res, next) => {
+  res.send("signin route");
+});
+
+router.post("/refresh-token", async (req, res, next) => {
+  res.send("refreshing a token");
+});
+
+router.post("/logout", async (req, res, next) => {
+  res.send("logout");
+});
+
+export default router;

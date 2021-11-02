@@ -1,0 +1,9 @@
+use('test');
+
+
+// Search for documents in the current collection.
+db.getCollection('users')
+  .find(
+    {
+    }
+  )
