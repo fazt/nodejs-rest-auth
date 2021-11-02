@@ -1,0 +1,13 @@
+@api = http://localhost:3000/auth
+
+### signup
+POST {{api}}/signup
+
+### signin 
+POST {{api}}/signin
+
+### refresh token
+POST {{api}}/refresh-token
+
+### logout
+POST {{api}}/logout

@@ -1,0 +1,6 @@
+
+### 
+GET http://localhost:3000
+
+### 404 Error
+GET http://localhost:3000/notfound
