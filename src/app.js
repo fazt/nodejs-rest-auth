@@ -3,6 +3,7 @@ import morgan from "morgan";
 import createError from "http-errors";
 
 import authRoutes from "./routes/auth.routes";
+import { verifyAccessToken } from "./helpers/jwt_helpers";
 
 const app = express();
 
@@ -10,8 +11,8 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.get("/", async (req, res) => {
-  res.send("REST API");
+app.get("/", verifyAccessToken, async (req, res) => {
+  res.send("rest api");
 });
 
 app.use("/auth", authRoutes);

@@ -11,4 +11,5 @@ export const MONGODB_URI =
 export const MONGODB_DB = process.env.MONGODB_DB || "test";
 
 // SECRET
-export const JWT_SECRET = process.env.JWT_SECRET || "some-secret";
+export const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET || "some-secret";
+export const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET || "some-secret";
