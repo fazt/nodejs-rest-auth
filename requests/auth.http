@@ -5,12 +5,18 @@ POST {{api}}/signup
 Content-Type: application/json
 
 {
-  "email": "joe1110@faztweb.com",
+  "email": "joe1210@faztweb.com",
   "password": "joepassword"
 }
 
 ### signin 
 POST {{api}}/signin
+Content-Type: application/json
+
+{
+  "email": "joe@faztweb.com",
+  "password": "joepassword"
+}
 
 ### refresh token
 POST {{api}}/refresh-token

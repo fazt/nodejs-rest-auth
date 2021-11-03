@@ -32,7 +32,26 @@ router.post("/signup", async (req, res, next) => {
 });
 
 router.post("/signin", async (req, res, next) => {
-  res.send("signin route");
+  try {
+    // validate email and password
+    const result = await authSchema.validateAsync(req.body);
+
+    // check if user is not registered
+    const user = await User.findOne({ email: result.email });
+
+    if (!user) throw new createError.NotFound(`${result.email} is not register`);
+
+    const isValidPassword = await user.comparePassword(result.password);
+
+    if (!isValidPassword) throw new createError.Unauthorized("Invalid password");
+
+    const accessToken = await signAccessToken(user.id);
+
+    res.json({ accessToken }); 
+  } catch (error) {
+    if (error.isJoi) return next(new createError.BadRequest("Invalid username or password"))
+    next(error);
+  }
 });
 
 router.post("/refresh-token", async (req, res, next) => {

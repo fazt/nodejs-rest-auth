@@ -17,7 +17,10 @@ export const signAccessToken = (userId) => {
     };
 
     jwt.sign(payload, JWT_SECRET, options, (err, token) => {
-      if (err) return reject(err);
+      if (err) {
+        // console.log(err.message);
+        reject(new createError.InternalServerError());
+      }
 
       resolve(token);
     });
