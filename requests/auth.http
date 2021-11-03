@@ -5,7 +5,7 @@ POST {{api}}/signup
 Content-Type: application/json
 
 {
-  "email": "joe1210@faztweb.com",
+  "email": "joe12110@faztweb.com",
   "password": "joepassword"
 }
 
