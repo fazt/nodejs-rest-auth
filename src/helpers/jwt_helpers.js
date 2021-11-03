@@ -33,7 +33,16 @@ export const verifyAccessToken = (req, res, next) => {
   const token = bearerToken[1];
 
   jwt.verify(token, ACCESS_TOKEN_SECRET, (err, payload) => {
-    if (err) return next(new createError.Unauthorized());
+    if (err) {
+      // if (err.name === "JsonWebTokenError") {
+      //   return next(new createError.Unauthorized());
+      // } else {
+      //   return next(new createError.Unauthorized(err.message));
+      // }
+      const message =
+        err.name === "JsonWebTokenError" ? "Unauthorized" : err.message;
+      return next(new createError.Unauthorized(message));
+    }
 
     req.userId = payload.aud;
     next();

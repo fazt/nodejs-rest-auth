@@ -5,7 +5,7 @@ import { connectToMongoDB } from './helpers/init_mongodb'
 async function startServer() {
   await connectToMongoDB()
   app.listen(PORT)
-  console.log('Server on port', PORT)
+  console.log('Server on port 🚀', PORT)
 }
 
 startServer()

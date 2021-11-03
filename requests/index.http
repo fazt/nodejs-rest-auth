@@ -1,7 +1,7 @@
 
 ### 
 GET http://localhost:3000
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzU5NTM4OTksImV4cCI6MTYzNTk1MzkxOSwiYXVkIjoiNjE4MWI3YzU0N2I0YjY1ZDkyOTc4NzgwIiwiaXNzIjoiZmF6dC5kZXYifQ.F21RFgWXgEL2mdUfAe02Ye800rP082lB17Hcwrsr_fc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzU5NTQ4OTUsImV4cCI6MTYzNTk1NDkxNSwiYXVkIjoiNjE4MWI3YzU0N2I0YjY1ZDkyOTc4NzgwIiwiaXNzIjoiZmF6dC5kZXYifQ._g6_B3yUyXhAPuFr1xtmQUDyE5Ee-Fr2ZJ_3Nu_S-pQ 
 
 ### 404 Error
 GET http://localhost:3000/notfound
