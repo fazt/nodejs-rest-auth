@@ -8,7 +8,7 @@ export const signAccessToken = (userId) => {
     const payload = {};
 
     const options = {
-      expiresIn: "20s",
+      expiresIn: "1y",
       issuer: "fazt.dev",
       audience: userId,
     };
@@ -61,7 +61,7 @@ export const signRefreshToken = (userId) => {
         reject(new createError.InternalServerError());
       }
       // Store the token with id key and token value on redis
-      client.set(userId, token, "EX", 30, (err, reply) => {
+      client.set(userId, token, "EX", 365 * 24 * 60 * 60, (err, reply) => {
         if (err) {
           console.log(err.message);
           return reject(new createError.InternalServerError());
