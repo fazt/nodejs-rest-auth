@@ -63,4 +63,21 @@ export const signRefreshToken = (userId) => {
       resolve(token);
     });
   });
-}
+};
+
+export const verifyRefreshToken = (refreshToken) => {
+  return new Promise((resolve, reject) => {
+    jwt.verify(refreshToken, REFRESH_TOKEN_SECRET, (err, payload) => {
+      if (err) {
+        // const message =
+        //   err.name === "JsonWebTokenError" ? "Unauthorized" : err.message;
+        // return reject(new createError.Unauthorized(message));
+        return reject(new createError.Unauthorized());
+      }
+
+      const userId = payload.aud;
+
+      resolve(userId);
+    });
+  });
+};

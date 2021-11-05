@@ -2,7 +2,11 @@ import { Router } from "express";
 import createError from "http-errors";
 import User from "../models/User";
 import { authSchema } from "../helpers/validation_schema";
-import { signAccessToken, signRefreshToken } from "../helpers/jwt_helpers";
+import {
+  signAccessToken,
+  signRefreshToken,
+  verifyRefreshToken,
+} from "../helpers/jwt_helpers";
 
 const router = Router();
 
@@ -60,7 +64,21 @@ router.post("/signin", async (req, res, next) => {
 });
 
 router.post("/refresh-token", async (req, res, next) => {
-  res.send("refreshing a token");
+  try {
+    const { refreshToken } = req.body;
+
+    if (!refreshToken)
+      throw new createError.BadRequest("Invalid refresh token");
+
+    const userId = await verifyRefreshToken(refreshToken);
+
+    const accessToken = await signAccessToken(userId);
+    const newRefreshToken = await signRefreshToken(userId);
+
+    res.send({ accessToken, refreshToken: newRefreshToken });
+  } catch (error) {
+    next(error);
+  }
 });
 
 router.post("/logout", async (req, res, next) => {

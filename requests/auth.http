@@ -5,7 +5,7 @@ POST {{api}}/signup
 Content-Type: application/json
 
 {
-  "email": "joe12110@faztweb.com",
+  "email": "joe@faztweb.com",
   "password": "joepassword"
 }
 
@@ -20,6 +20,11 @@ Content-Type: application/json
 
 ### refresh token
 POST {{api}}/refresh-token
+Content-Type: application/json
+
+{
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzYxMjc2ODEsImV4cCI6MTY2NzY4NTI4MSwiYXVkIjoiNjE4NTUzYmY1NzM1MmMwYmQzMjU5YWM5IiwiaXNzIjoiZmF6dC5kZXYifQ.g-Qzj3mj9xwcpcial0xzpWhaBbDsiSiQOvx0jLsrlEA"
+}
 
 ### logout
 POST {{api}}/logout
