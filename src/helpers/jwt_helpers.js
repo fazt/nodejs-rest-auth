@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 import createError from "http-errors";
 import { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } from "../config";
+import client from "./init_redis";
 
 export const signAccessToken = (userId) => {
   return new Promise((resolve, reject) => {
@@ -49,7 +50,7 @@ export const signRefreshToken = (userId) => {
     const payload = {};
 
     const options = {
-      expiresIn: "1y",
+      expiresIn: "30s",
       issuer: "fazt.dev",
       audience: userId,
     };
@@ -59,8 +60,14 @@ export const signRefreshToken = (userId) => {
         console.log(err.message);
         reject(new createError.InternalServerError());
       }
-
-      resolve(token);
+      // Store the token with id key and token value on redis
+      client.set(userId, token, "EX", 30, (err, reply) => {
+        if (err) {
+          console.log(err.message);
+          return reject(new createError.InternalServerError());
+        }
+        resolve(token);
+      });
     });
   });
 };
@@ -77,7 +84,16 @@ export const verifyRefreshToken = (refreshToken) => {
 
       const userId = payload.aud;
 
-      resolve(userId);
+      client.get(userId, (err, result) => {
+        if (err) {
+          console.log(err.message);
+          return reject(new createError.InternalServerError());
+        }
+
+        if (result === refreshToken) return resolve(userId);
+
+        reject(new createError.Unauthorized());
+      });
     });
   });
 };

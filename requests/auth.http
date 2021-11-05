@@ -23,7 +23,7 @@ POST {{api}}/refresh-token
 Content-Type: application/json
 
 {
-  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzYxMjc2ODEsImV4cCI6MTY2NzY4NTI4MSwiYXVkIjoiNjE4NTUzYmY1NzM1MmMwYmQzMjU5YWM5IiwiaXNzIjoiZmF6dC5kZXYifQ.g-Qzj3mj9xwcpcial0xzpWhaBbDsiSiQOvx0jLsrlEA"
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzYxMzEwMzgsImV4cCI6MTYzNjEzMTA2OCwiYXVkIjoiNjE4NTUzYmY1NzM1MmMwYmQzMjU5YWM5IiwiaXNzIjoiZmF6dC5kZXYifQ.tAGWSqvSKMhhpQOOrzDpARdFxglTxs6L9TmGZreytp4"
 }
 
 ### logout
