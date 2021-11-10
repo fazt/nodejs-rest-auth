@@ -31,5 +31,5 @@ DELETE {{api}}/logout
 Content-Type: application/json
 
 {
-  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzYxMzE3MjEsImV4cCI6MTYzNjEzMTc1MSwiYXVkIjoiNjE4NTUzYmY1NzM1MmMwYmQzMjU5YWM5IiwiaXNzIjoiZmF6dC5kZXYifQ.xZQc_7kk5cWou5yhXnp3r1ZXQy_7Vphxyv1-ZbLNIdw"
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzYxMzE4MjcsImV4cCI6MTYzNjEzMTg1NywiYXVkIjoiNjE4NTUzYmY1NzM1MmMwYmQzMjU5YWM5IiwiaXNzIjoiZmF6dC5kZXYifQ.hzWki3YUSIMNf3c6_P-PA9-2g3I15urRcDL2mX0yM8o"
 }
