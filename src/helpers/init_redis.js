@@ -1,8 +1,9 @@
 import redis from "redis";
+import { REDIS_HOST, REDIS_PORT } from "../config";
 
 const client = redis.createClient({
-  port: 6379,
-  host: "127.0.0.1",
+  port: REDIS_PORT,
+  host: REDIS_HOST,
 });
 
 client.on("connect", () => {
@@ -26,4 +27,3 @@ process.on("SIGINT", () => {
 });
 
 export default client;
- 

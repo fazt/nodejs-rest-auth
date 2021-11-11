@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+  webauth:
+    container_name: webauth
+    image: node:16
+    ports:
+      - "3000:3000"
+    build: .
+    volumes:
+      - .:/app
+    depends_on:
+      - dbauth
+      - redisauth
+  dbauth:
+    container_name: dbauth
+    image: mongo
+    ports:
+      - "27017:27017"
+  redisauth:
+    container_name: redisauth
+    image: redis
+    ports:
+      - "6379:6379"
