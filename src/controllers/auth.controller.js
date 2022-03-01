@@ -1,4 +1,4 @@
-import client from "../helpers/init_redis";
+import { client } from "../helpers/init_redis";
 import createError from "http-errors";
 import User from "../models/User";
 import { authSchema } from "../helpers/validation_schema";
@@ -87,16 +87,20 @@ export const logout = async (req, res, next) => {
 
     const userId = await verifyRefreshToken(refreshToken);
 
-    client.DEL(userId, (err, result) => {
-      if (err) {
-        console.log(err.message);
-        return next(new createError.InternalServerError());
-      }
+    const result = await client.del(userId);
 
-      console.log(result);
+    console.log(result);
 
-      res.sendStatus(204);
-    });
+    return res.sendStatus(204);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const profile = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.userId).select("-password");
+    return res.json(user);
   } catch (error) {
     next(error);
   }

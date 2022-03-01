@@ -5,8 +5,8 @@ POST {{api}}/signup
 Content-Type: application/json
 
 {
-  "email": "joe@faztweb.com",
-  "password": "joepassword"
+  "email": "fazttech4@gmail.com",
+  "password": "fanccontra"
 }
 
 ### signin 
@@ -14,8 +14,8 @@ POST {{api}}/signin
 Content-Type: application/json
 
 {
-  "email": "joe@faztweb.com",
-  "password": "joepassword"
+  "email": "fazttech@gmail.com",
+  "password": "fanccontra"
 }
 
 ### refresh token
@@ -23,7 +23,7 @@ POST {{api}}/refresh-token
 Content-Type: application/json
 
 {
-  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzYxMzEwMzgsImV4cCI6MTYzNjEzMTA2OCwiYXVkIjoiNjE4NTUzYmY1NzM1MmMwYmQzMjU5YWM5IiwiaXNzIjoiZmF6dC5kZXYifQ.tAGWSqvSKMhhpQOOrzDpARdFxglTxs6L9TmGZreytp4"
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDYwOTkxNjUsImV4cCI6MTY0NjA5OTE5NSwiYXVkIjoiNjIxZDcwMGViNWZmZTk5ZjcxMDM4NDAwIiwiaXNzIjoiZmF6dC5kZXYifQ.Bpz79I6NFEVjCLpkkd2lfFc8oEKdv0dZXcVMg_YW6C8"
 }
 
 ### logout
@@ -33,3 +33,7 @@ Content-Type: application/json
 {
   "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzYxMzE4MjcsImV4cCI6MTYzNjEzMTg1NywiYXVkIjoiNjE4NTUzYmY1NzM1MmMwYmQzMjU5YWM5IiwiaXNzIjoiZmF6dC5kZXYifQ.hzWki3YUSIMNf3c6_P-PA9-2g3I15urRcDL2mX0yM8o"
 }
+
+### profile
+GET {{api}}/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDYwOTc3MDIsImV4cCI6MTY3NzY1NTMwMiwiYXVkIjoiNjIxZDcwMGViNWZmZTk5ZjcxMDM4NDAwIiwiaXNzIjoiZmF6dC5kZXYifQ.7qBCOUQ-_0jfos1CWyJoyfZr9uBKxELN0z00lhtNWbo

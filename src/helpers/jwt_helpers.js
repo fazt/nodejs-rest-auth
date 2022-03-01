@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import createError from "http-errors";
 import { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } from "../config";
-import client from "./init_redis";
+import { client } from "./init_redis";
 
 export const signAccessToken = (userId) => {
   return new Promise((resolve, reject) => {
@@ -41,6 +41,7 @@ export const verifyAccessToken = (req, res, next) => {
     }
 
     req.userId = payload.aud;
+
     next();
   });
 };
@@ -55,26 +56,24 @@ export const signRefreshToken = (userId) => {
       audience: userId,
     };
 
-    jwt.sign(payload, REFRESH_TOKEN_SECRET, options, (err, token) => {
+    jwt.sign(payload, REFRESH_TOKEN_SECRET, options, async (err, token) => {
       if (err) {
         console.log(err.message);
         reject(new createError.InternalServerError());
       }
       // Store the token with id key and token value on redis
-      client.set(userId, token, "EX", 365 * 24 * 60 * 60, (err, reply) => {
-        if (err) {
-          console.log(err.message);
-          return reject(new createError.InternalServerError());
-        }
-        resolve(token);
+      await client.set(userId, token, {
+        EX: 365 * 24 * 60 * 609,
       });
+
+      resolve(token);
     });
   });
 };
 
 export const verifyRefreshToken = (refreshToken) => {
   return new Promise((resolve, reject) => {
-    jwt.verify(refreshToken, REFRESH_TOKEN_SECRET, (err, payload) => {
+    jwt.verify(refreshToken, REFRESH_TOKEN_SECRET, async (err, payload) => {
       if (err) {
         // const message =
         //   err.name === "JsonWebTokenError" ? "Unauthorized" : err.message;
@@ -84,16 +83,12 @@ export const verifyRefreshToken = (refreshToken) => {
 
       const userId = payload.aud;
 
-      client.get(userId, (err, result) => {
-        if (err) {
-          console.log(err.message);
-          return reject(new createError.InternalServerError());
-        }
+      const result = await client.get(userId);
+      console.log(result)
 
-        if (result === refreshToken) return resolve(userId);
+      if (result === refreshToken) return resolve(userId);
 
-        reject(new createError.Unauthorized());
-      });
+      reject(new createError.Unauthorized());
     });
   });
 };

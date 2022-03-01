@@ -35,4 +35,4 @@ app.use(async (err, req, res, next) => {
   });
 });
 
-export default app;
+export { app };

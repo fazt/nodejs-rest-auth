@@ -1,9 +1,8 @@
-import redis from "redis";
-import { REDIS_HOST, REDIS_PORT } from "../config";
+import { createClient } from "redis";
+import { REDIS_HOST } from "../config";
 
-const client = redis.createClient({
-  port: REDIS_PORT,
-  host: REDIS_HOST,
+export const client = createClient({
+  HOST: REDIS_HOST,
 });
 
 client.on("connect", () => {
@@ -25,5 +24,3 @@ client.on("end", () => {
 process.on("SIGINT", () => {
   client.quit();
 });
-
-export default client;
