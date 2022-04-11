@@ -2,8 +2,8 @@ import express from "express";
 import morgan from "morgan";
 import createError from "http-errors";
 
-import authRoutes from "./routes/auth.routes";
-import { verifyAccessToken } from "./helpers/jwt_helpers";
+import authRoutes from "./routes/auth.routes.js";
+import { verifyAccessToken } from "./helpers/jwt_helpers.js";
 
 const app = express();
 

@@ -3,33 +3,28 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "dev": "nodemon src --exec babel-node",
-    "debug": "nodemon --inspect dist/index.js",
-    "build": "babel src -d dist",
-    "start": "node dist/index.js"
+    "dev": "nodemon src",
+    "debug": "nodemon --inspect src/index.js",
+    "start": "node src/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@babel/runtime": "^7.17.2",
     "bcrypt": "^5.0.1",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "http-errors": "^2.0.0",
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.2.4",
+    "mongoose": "^6.2.10",
     "morgan": "^1.10.0",
-    "redis": "^4.0.4"
+    "redis": "^4.0.6"
   },
   "devDependencies": {
-    "@babel/cli": "^7.17.6",
-    "@babel/core": "^7.17.5",
-    "@babel/node": "^7.16.8",
     "@babel/plugin-transform-runtime": "^7.17.0",
-    "@babel/preset-env": "^7.16.11",
     "nodemon": "^2.0.15"
   }
 }

@@ -5,8 +5,8 @@ import {
   signin,
   signup,
   profile,
-} from "../controllers/auth.controller";
-import { verifyAccessToken } from "../helpers/jwt_helpers";
+} from "../controllers/auth.controller.js";
+import { verifyAccessToken } from "../helpers/jwt_helpers.js";
 
 const router = Router();
 

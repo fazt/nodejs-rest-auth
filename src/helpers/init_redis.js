@@ -1,5 +1,5 @@
 import { createClient } from "redis";
-import { REDIS_HOST } from "../config";
+import { REDIS_HOST } from "../config.js";
 
 export const client = createClient({
   HOST: REDIS_HOST,

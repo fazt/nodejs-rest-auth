@@ -5,7 +5,7 @@ POST {{api}}/signup
 Content-Type: application/json
 
 {
-  "email": "fazttech4@gmail.com",
+  "email": "fazttech14@gmail.com",
   "password": "fanccontra"
 }
 
@@ -14,7 +14,7 @@ POST {{api}}/signin
 Content-Type: application/json
 
 {
-  "email": "fazttech@gmail.com",
+  "email": "fazttech10@gmail.com",
   "password": "fanccontra"
 }
 

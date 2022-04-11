@@ -1,12 +1,12 @@
-import { client } from "../helpers/init_redis";
 import createError from "http-errors";
-import User from "../models/User";
-import { authSchema } from "../helpers/validation_schema";
+import User from "../models/User.js";
+import { client } from "../helpers/init_redis.js";
+import { authSchema } from "../helpers/validation_schema.js";
 import {
   signAccessToken,
   signRefreshToken,
   verifyRefreshToken,
-} from "../helpers/jwt_helpers";
+} from "../helpers/jwt_helpers.js";
 
 export const signup = async (req, res, next) => {
   try {

@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import createError from "http-errors";
-import { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } from "../config";
-import { client } from "./init_redis";
+import { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } from "../config.js";
+import { client } from "./init_redis.js";
 
 export const signAccessToken = (userId) => {
   return new Promise((resolve, reject) => {
