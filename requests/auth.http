@@ -6,7 +6,7 @@ Content-Type: application/json
 
 {
   "email": "fazttech14@gmail.com",
-  "password": "fanccontra"
+  "password": "fazttech123"
 }
 
 ### signin 
@@ -14,8 +14,8 @@ POST {{api}}/signin
 Content-Type: application/json
 
 {
-  "email": "fazttech10@gmail.com",
-  "password": "fanccontra"
+  "email": "fazttech14@gmail.com",
+  "password": "fazttech123"
 }
 
 ### refresh token
@@ -36,4 +36,4 @@ Content-Type: application/json
 
 ### profile
 GET {{api}}/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDYwOTc3MDIsImV4cCI6MTY3NzY1NTMwMiwiYXVkIjoiNjIxZDcwMGViNWZmZTk5ZjcxMDM4NDAwIiwiaXNzIjoiZmF6dC5kZXYifQ.7qBCOUQ-_0jfos1CWyJoyfZr9uBKxELN0z00lhtNWbo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NzkwMDUyOTIsImV4cCI6MTcxMDU2Mjg5MiwiYXVkIjoiNjQxMzk0ZGYxZTQ1YzA2YTFjMTgwZjA1IiwiaXNzIjoiZmF6dC5kZXYifQ.9pmzDvElMjsEnttBPrKtkk4TWIolT8L-QuNWR4uE5UE

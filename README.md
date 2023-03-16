@@ -11,10 +11,22 @@ Requeriments:
 
 ### Installation for development with docker-compose (Recommended)
 
+Fist, you need to clone the project and install the dependencies
 ```
 git clone https://github.com/FaztWeb/nodejs-restapi-auth
 cd nodejs-restapi-auth
+npm install 
+```
+
+then, you can execute docker-compose for redis and mongodb
+
+```
 docker-compose up -d
+```
+
+finally, you can run the project with the command
+
+```
 npm run dev
 ```
 

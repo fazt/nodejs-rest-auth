@@ -1,4 +1,4 @@
-import { Router } from "express";
+import Router from "express-promise-router";
 import {
   logout,
   refreshToken,
@@ -7,10 +7,12 @@ import {
   profile,
 } from "../controllers/auth.controller.js";
 import { verifyAccessToken } from "../helpers/jwt_helpers.js";
+import { validateSchema } from "../middlewares/validateSchema.js";
+import { signupSchema } from "../schemas/auth.schema.js";
 
 const router = Router();
 
-router.post("/signup", signup);
+router.post("/signup", validateSchema(signupSchema), signup);
 
 router.post("/signin", signin);
 
